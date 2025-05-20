@@ -1,0 +1,50 @@
+{
+  "name": "mern-monorepo",
+  "version": "1.0.0",
+  "description": "Full-stack MERN application with monorepo structure",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && npm start",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently --prefix \"[{name}]\" --names \"SERVER,CLIENT\" --prefix-colors \"yellow,green\" \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm run build",
+    "deploy": "cd client && npm run build && cd ../server && npm start",
+    "test": "concurrently --prefix \"[{name}]\" --names \"CLIENT,SERVER\" --prefix-colors \"green,yellow\" \"cd client && npm test\" \"cd server && npm test\"",
+    "lint": "concurrently --prefix \"[{name}]\" --names \"CLIENT,SERVER\" --prefix-colors \"green,yellow\" \"cd client && npm run lint\" \"cd server && npm run lint\"",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "clean": "rm -rf node_modules && rm -rf client/node_modules && rm -rf server/node_modules"
+  },
+  "keywords": [
+    "mern",
+    "mongodb",
+    "express",
+    "react",
+    "nodejs",
+    "monorepo"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mern-monorepo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/mern-monorepo/issues"
+  },
+  "homepage": "https://github.com/yourusername/mern-monorepo#readme",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}
