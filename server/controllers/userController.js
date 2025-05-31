@@ -72,4 +72,4 @@ const registerUser = async(req, res) => {
     }
 }
 
-export { loginUser, registerUser}
+module.exports = { loginUser, registerUser}

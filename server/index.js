@@ -1,7 +1,7 @@
 const cors = require("cors");
 const express = require('express');
-const { connectDB } = require('../config/db.js');
-// const userRouter = require("../routes/userRouter.js");
+const { connectDB } = require('./config/db.js');
+const userRouter = require("./routes/userRouter.js");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -29,7 +29,7 @@ connectDB();
 
 // Routes
 
-// app.use('/api/user', userRouter)
+app.use('/api/user', userRouter)
 
 app.get('/', (req, res) => {
   res.send('Backend is working!');

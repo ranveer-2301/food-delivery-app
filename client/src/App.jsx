@@ -3,7 +3,7 @@ import { CgBoy , CgBell} from "react-icons/cg";
 function App() {
   return (
     <div>
-      
+      app
     </div>
   )
 }
