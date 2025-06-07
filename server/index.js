@@ -1,10 +1,15 @@
 const cors = require("cors");
 const express = require('express');
 const { connectDB } = require('./config/db.js');
+const path = require('path');
+
 const userRouter = require("./routes/userRouter.js");
+const itemRouter = require("./routes/itemRouter.js");
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
 
 // Middleware
 
@@ -28,8 +33,10 @@ app.use(express.urlencoded({extended: true}))
 connectDB();
 
 // Routes
-
 app.use('/api/user', userRouter)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+app.use('/api/items', itemRouter)
+
 
 app.get('/', (req, res) => {
   res.send('Backend is working!');
