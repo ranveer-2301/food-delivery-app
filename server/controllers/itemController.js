@@ -1,24 +1,49 @@
-const itemModel = require('../models/itemModel.js');
+const { uploadOnCloudinary } = require('../config/cloudinary.js');
+const Item = require('../models/itemModel.js');
 
 module.exports.createItem = async (req, res, next) => {
-    try {
-        const { name, description, category, price, rating, hearts} = req.body;
-        const imageUrl = req.file ? `/upload/${req.file.filename}` : '';
+    // console.log("req.file", req.file);
+  try {
+    const { name, description, category, price, rating, hearts } = req.body;
 
-        const total = Number(price) = 1;
+    let imageUrl = '';
 
-        const newItem = new itemModel({
-            name, description, category, price, rating, hearts, imageUrl, total,
-        })
-
-        const save = await newItem.save();
-        res.status(201).json(save);
-    } 
-    catch (err) {
-        if(err.code === 11000) {
-            res.status(400).json({ success: false, message: 'Item name already exists'})
-        }
+    // Upload image to Cloudinary if file exists
+    if (req.file && req.file.path) {
+      const cloudinaryResponse = await uploadOnCloudinary(req.file.path);
+      imageUrl = cloudinaryResponse.secure_url;
     }
+
+    // Calculate total (example: total = price * rating)
+    const total = Number(price) * 1; // You can change logic as needed
+
+    // Create new item
+    const newItem = new Item({
+      name,
+      description,
+      category,
+      price,
+      rating,
+      hearts,
+      total,
+      imageUrl,
+    });
+
+    await newItem.save();
+
+    res.status(201).json({
+      success: true,
+      message: 'Item created successfully!',
+      data: newItem,
+    });
+  } catch (error) {
+    console.error('Error creating item:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to create item',
+      error: error.message,
+    });
+  }
 }
 
 // GET FUNCTION TO GET ALL ITEMS

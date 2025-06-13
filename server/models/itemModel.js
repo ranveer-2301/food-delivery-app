@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
-    name: { type: String, required: true, uniwue: true },
+    name: { type: String, required: true, unique: true },
     description: { type: String, required: true },
     category: { type: String, required: true },
     price: { type: Number, required: true },
@@ -11,4 +11,4 @@ const itemSchema = new mongoose.Schema({
     imageUrl: { type: String},
 },{timestamps: true});
 
-module.export =  mongoose.model('Item', itemSchema);
+module.exports =  mongoose.model('Item', itemSchema);
