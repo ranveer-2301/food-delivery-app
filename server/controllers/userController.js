@@ -1,6 +1,6 @@
 const userModel = require("../models/userModel.js");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");       // ❗ it's `bcrypt`, not `bycrypt`
+const bcrypt = require("bcrypt");       
 const validator = require("validator");
 
 // LOGIN 
