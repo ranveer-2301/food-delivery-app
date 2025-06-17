@@ -8,6 +8,7 @@ const cartRouter = require('./routes/cartRouter.js');
 
 const userRouter = require("./routes/userRouter.js");
 const itemRouter = require("./routes/itemRouter.js");
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -30,6 +31,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
+app.use(cookieParser());
 
 // Database connection
 connectDB();

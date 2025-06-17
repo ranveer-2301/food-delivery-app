@@ -3,7 +3,11 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");       
 const validator = require("validator");
 
-// LOGIN 
+// CREATE A TOKEN
+const createToken = (id) => {
+    return jwt.sign({id}, process.env.JWT_SECRET)
+}
+// LOGIN f
 const loginUser = async(req, res) => {
     const { email, password } = req.body
 
@@ -19,7 +23,9 @@ const loginUser = async(req, res) => {
         }
 
         const token = createToken(user._id);
-        res.json({ success: true, token })
+        res.status(200)
+        .cookie('token', token, { maxAge: 60 * 60 * 24 * 30, httpOnly: true })
+        .json({success: true, message: "Login Successful"})
     } 
     catch (error) {
         console.log(error);
@@ -27,10 +33,7 @@ const loginUser = async(req, res) => {
     }
 }
 
-// CREATE A TOKEN
-const createToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_SECRET)
-}
+
 
 // REGISTER
 const registerUser = async(req, res) => {
