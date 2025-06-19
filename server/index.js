@@ -5,6 +5,7 @@ const express = require('express');
 const { connectDB } = require('./config/db.js');
 const path = require('path');
 const cartRouter = require('./routes/cartRouter.js');
+const { orderRouter } = require('./routes/orderRouter.js');
 
 const userRouter = require("./routes/userRouter.js");
 const itemRouter = require("./routes/itemRouter.js");
@@ -42,8 +43,12 @@ app.use('/api/user', userRouter)
 // app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 app.use('/api/items', itemRouter)
 
-// cart Router(problem here)
+// cart Router
 app.use('/api/cart', cartRouter)
+
+// order Router
+app.use('/api/orders', orderRouter)
+
 
 app.get('/', (req, res) => {
   res.send('API is working!');

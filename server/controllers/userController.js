@@ -7,7 +7,7 @@ const validator = require("validator");
 const createToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET)
 }
-// LOGIN f
+// LOGIN 
 const loginUser = async(req, res) => {
     const { email, password } = req.body
 
@@ -25,7 +25,7 @@ const loginUser = async(req, res) => {
         const token = createToken(user._id);
         res.status(200)
         .cookie('token', token, { maxAge: 60 * 60 * 24 * 30, httpOnly: true })
-        .json({success: true, message: "Login Successful"})
+        .json({success: true, message: "Login Successful", "TOKEN" : token})
     } 
     catch (error) {
         console.log(error);
