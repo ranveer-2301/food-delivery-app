@@ -27,12 +27,12 @@ exports.uploadOnCloudinary = async (localFilePath) => {
     console.log(`Cloudinary URL: ${response.secure_url}`);
 
     // Delete local file after upload
-    try {
-      await fs.promises.unlink(localFilePath);
-      console.log(`Local file deleted: ${localFilePath}`);
-    } catch (fileError) {
-      console.error(`Failed to delete local file: ${localFilePath}`, fileError);
-    }
+    // try {
+    //   await fs.promises.unlink(localFilePath);
+    //   console.log(`Local file deleted: ${localFilePath}`);
+    // } catch (fileError) {
+    //   console.error(`Failed to delete local file: ${localFilePath}`, fileError);
+    // }
 
     return response;
   } catch (error) {
