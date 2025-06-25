@@ -40,7 +40,7 @@ connectDB();
 // Routes
 app.use('/api/user', userRouter)
 
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 app.use('/api/items', itemRouter)
 
 // cart Router

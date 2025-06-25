@@ -46,29 +46,59 @@ module.exports.createItem = async (req, res, next) => {
   }
 }
 
-// GET FUNCTION TO GET ALL ITEMS
-module.exports.getItems = async(req, res, next) => { // if needed use _req
-    try {
-        const items = await itemModel.find().sort({createdAt: -1});
-        const host = `${req, protocol}://${req.get('host')}`;
+// // GET FUNCTION TO GET ALL ITEMS
+// module.exports.getItems = async(req, res, next) => { // if needed use _req
+//     try {
+//         const items = await itemModel.find().sort({createdAt: -1});
+//         const host = `${req, protocol}://${req.get('host')}`;
 
-        const withFullUrl = itemModel.applyTimestamps(i => ({
-            ...i.toObject(),
-            imageUrl: i.imageUrl ? host + i.imageUrl : '',
-        }))
-        res.json(withFullUrl)
-    } catch (error) {
-        next(error);
-    }
-}
+//         const withFullUrl = items.applyTimestamps(i => ({
+//             ...i.toObject(),
+//             imageUrl: i.imageUrl ? host + i.imageUrl : '',
+//         }))
+//         res.json(withFullUrl)
+//     } catch (error) {
+//         next(error);
+//     }
+// }
+
+// // DELETE FUNCTION TO DELETE ITEMS
+// module.exports.deleteItem = async(req, res, next) => {
+//   try {
+//       const removed = await itemModel.findByIdAndDelete(req.params.id);
+//       if(!removed) return res.status(404).json({ success: false, message: "Item not found"})
+//           res.status(204).end();
+//   } catch (error) {
+//       next(error);
+//   }
+// }
+
+// GET FUNCTION TO GET ALL ITEMS
+module.exports.getItems = async (req, res, next) => {
+  try {
+    const items = await Item.find().sort({ createdAt: -1 });
+
+    res.status(200).json(items);
+  } catch (error) {
+    console.error('Error fetching items:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch items',
+      error: error.message,
+    });
+  }
+};
 
 // DELETE FUNCTION TO DELETE ITEMS
-module.exports.deleteItem = async(req, res, next) => {
+module.exports.deleteItem = async (req, res, next) => {
   try {
-      const removed = await itemModel.findByIdAndDelete(req.params.id);
-      if(!removed) return res.status(404).json({ success: false, message: "Item not found"})
-          res.status(204).end();
+    const removed = await Item.findByIdAndDelete(req.params.id);
+    if (!removed) {
+      return res.status(404).json({ success: false, message: 'Item not found' });
+    }
+    res.status(204).end();
   } catch (error) {
-      next(error);
+    console.error('Error deleting item:', error);
+    next(error);
   }
-}
+};
