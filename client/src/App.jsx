@@ -5,6 +5,7 @@ import ContactPage from './pages/ContactPage/ContactPage.jsx';
 import AboutPage from './pages/AboutPage/AboutPage.jsx';
 import Menu from './pages/Menu/Menu.jsx';
 import Cart from './pages/Cart/Cart.jsx';
+import SignUp from './components/SignUp/SignUp.jsx';
 
 const App = () => {
   return (
@@ -14,7 +15,9 @@ const App = () => {
       <Route path='/about' element={<AboutPage />} />
       <Route path='/menu' element={<Menu />} />
       <Route path='/cart' element={<Cart />} />
+
       <Route path='/login' element={<Home />} />
+      <Route path='/signup' element={<SignUp />} />
     </Routes>
   )
 }
