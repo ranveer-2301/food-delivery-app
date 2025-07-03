@@ -1,30 +1,60 @@
 import React, { useEffect, useState } from 'react';
-import { FaCheckCircle, FaEye, FaEyeSlash, FaLock, FaUser, FaArrowRight, FaUserPlus } from 'react-icons/fa';
-import {iconClass, inputBase} from '../../assets/drive-download-20250620T152333Z-1-001/dummydata'
+import {
+  FaCheckCircle, FaEye, FaEyeSlash, FaLock, FaUser, FaArrowRight, FaUserPlus
+} from 'react-icons/fa';
+import { iconClass, inputBase } from '../../assets/drive-download-20250620T152333Z-1-001/dummydata';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const Login = ({onLoginSuccess, onClose}) => {
+const url = 'http://localhost:5000';
 
-  const [showToast, setShowToast] = useState(false);
+const Login = ({ onLoginSuccess, onClose }) => {
+  const [showToast, setShowToast] = useState({ visible: false, message: '', isError: false });
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({username: '', password: '', rememberMe: false});
+  const [formData, setFormData] = useState({ email: '', password: '', rememberMe: false });
 
   useEffect(() => {
     const stored = localStorage.getItem('loginData');
-    if(stored) setFormData(JSON.parse(stored));
+    if (stored) setFormData(JSON.parse(stored));
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    formData.rememberMe ? localStorage.setItem('loginData', JSON.stringify(formData))
-    :localStorage.removeItem('loginData');
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000); // hide after 3 sec
-    onLoginSuccess();
+    try {
+      const res = await axios.post(`${url}/api/user/login`, {
+        email: formData.email,
+        password: formData.password,
+      });
+
+      console.log('Axios Response', res);
+
+      if (res.status === 200 && res.data.success && res.data.TOKEN) {
+        localStorage.setItem('authToken', res.data.TOKEN);
+
+        if (formData.rememberMe) {
+          localStorage.setItem('loginData', JSON.stringify(formData));
+        } else {
+          localStorage.removeItem('loginData');
+        }
+
+        setShowToast({ visible: true, message: 'Login Successful!', isError: false });
+
+        setTimeout(() => {
+          setShowToast({ visible: false, message: '', isError: false });
+          onLoginSuccess(res.data.TOKEN);
+        }, 1500);
+      } else {
+        throw new Error(res.data.message || 'Login Failed');
+      }
+    } catch (err) {
+      console.error('Axios error:', err);
+      const msg = err.response?.data?.message || err.message || 'Login failed';
+      setShowToast({ visible: true, message: msg, isError: true });
+    }
   };
 
-  const handleChange = ({target : {name, value, type, checked}}) => 
-    setFormData(prev => ({ ...prev, [name]: type === 'checked' ? checked:value}));
+  const handleChange = ({ target: { name, value, type, checked } }) =>
+    setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
 
   const toggleShowPassword = () => setShowPassword(prev => !prev);
 
@@ -34,11 +64,12 @@ const Login = ({onLoginSuccess, onClose}) => {
       {/* Toast Notification */}
       <div
         className={`fixed top-4 right-4 z-50 transition-all duration-300
-        ${showToast ? 'translate-y-0 opacity-100' : '-translate-y-20 opacity-0'}`}>
+        ${showToast.visible ? 'translate-y-0 opacity-100' : '-translate-y-20 opacity-0'}`}>
 
-        <div className='bg-green-600 text-white px-4 py-3 rounded-md shadow-lg flex items-center gap-2 text-sm'>
+        <div className={`px-4 py-3 rounded-md shadow-lg flex items-center gap-2 text-sm ${
+          showToast.isError ? 'bg-red-600 text-white' : 'bg-green-500 text-white'}`}>
           <FaCheckCircle className='flex-shrink-0' />
-          <span>Login Successful</span>
+          <span>{showToast.message}</span>
         </div>
       </div>
 
@@ -47,23 +78,32 @@ const Login = ({onLoginSuccess, onClose}) => {
         <div className='relative'>
           <FaUser className={iconClass} />
           <input
-            type='text'
-            name='username'
-            placeholder='Username' value={FormData.username} onChange={handleChange}
-            className={`${inputBase} pl-10 pr-4 py-3`} />
+            type='email'
+            name='email'
+            placeholder='Email'
+            value={formData.email}
+            onChange={handleChange}
+            className={`${inputBase} pl-10 pr-4 py-3`}
+          />
         </div>
+
         <div className='relative'>
           <FaLock className={iconClass} />
           <input
             type={showPassword ? 'text' : 'password'}
             name='password'
-            placeholder='password' value={FormData.password} onChange={handleChange}
-            className={`${inputBase} pl-10 pr-4 py-3`} />
-            <button
-                type='button' onClick={toggleShowPassword} 
-                className='absolute right-3 top-1/2 transform -translate-y-1/2 text-amber-400'>
-                    {showPassword ? <FaEyeSlash /> : <FaEye /> }
-            </button>
+            placeholder='Password'
+            value={formData.password}
+            onChange={handleChange}
+            className={`${inputBase} pl-10 pr-10 py-3`}
+          />
+          <button
+            type='button'
+            onClick={toggleShowPassword}
+            className='absolute right-3 top-1/2 transform -translate-y-1/2 text-amber-400'
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </button>
         </div>
 
         <div className='flex items-center'>
@@ -73,22 +113,28 @@ const Login = ({onLoginSuccess, onClose}) => {
               name="rememberMe"
               checked={formData.rememberMe}
               onChange={handleChange}
-              className='form-checkbox h-5 w-5 text-amber-600 bg-[#2D1B0E] border-amber-400 rounded focus:ring-amber-600'/>
+              className='form-checkbox h-5 w-5 text-amber-600 bg-[#2D1B0E] border-amber-400 rounded focus:ring-amber-600'
+            />
             <span className='ml-2 text-amber-100'>Remember me</span>
           </label>
         </div>
 
         <button
-          className='w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-[#2D1B0E] font-bold rounded-lg flex items-center justify-center gap-2 hover:scale-105 transition-transform'>
+          type='submit'
+          className='w-full py-3 bg-gradient-to-r from-amber-400 to-amber-600 text-[#2D1B0E] font-bold rounded-lg flex items-center justify-center gap-2 hover:scale-105 transition-transform'
+        >
           Sign In <FaArrowRight />
         </button>
-
       </form>
 
       <div className='text-center'>
-          <Link to='/signup' onClick={onClose} className='inline-flex items-center gap-2 text-amber-400 hover:text-amber-600 transition-colors' >
-            <FaUserPlus /> Create New Account
-          </Link>
+        <Link
+          to='/signup'
+          onClick={onClose}
+          className='inline-flex items-center gap-2 text-amber-400 hover:text-amber-600 transition-colors'
+        >
+          <FaUserPlus /> Create New Account
+        </Link>
       </div>
     </div>
   );

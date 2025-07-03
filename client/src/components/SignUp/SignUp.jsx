@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // ✅ Make sure you have this
 import { FaArrowLeft, FaCheckCircle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
 
-// ✅ Toast Component
+// Replace with your actual backend URL
+const url = 'http://localhost:5000';
+
+// Toast Component
 const AwesomeToast = ({ message, icon }) => (
   <div className='animate-slide-in fixed bottom-6 right-6 flex items-center bg-gradient-to-br from-amber-500 to-amber-600 px-6 py-4 rounded-lg shadow-lg border-2 border-amber-300/20'>
     <span className="text-2xl mr-3 text-[#20180E]">{icon}</span>
@@ -11,21 +15,15 @@ const AwesomeToast = ({ message, icon }) => (
 );
 
 const Signup = () => {
-  const [showToast, setShowToast] = useState(false);
+  const [showToast, setShowToast] = useState({ visible: false, message: '', icon: null });
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
-
+  const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const navigate = useNavigate();
 
-  // ✅ Auto-hide toast and redirect
   useEffect(() => {
-    if (showToast) {
+    if (showToast.visible && showToast.message === 'Sign Up Successful!') {
       const timer = setTimeout(() => {
-        setShowToast(false);
+        setShowToast({ visible: false, message: '', icon: null });
         navigate('/login');
       }, 2000);
       return () => clearTimeout(timer);
@@ -33,26 +31,39 @@ const Signup = () => {
   }, [showToast, navigate]);
 
   const handleChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Signup data:', formData);
+    try {
+      const res = await axios.post(`${url}/api/user/register`, formData);
+      console.log('Register Response:', res.data);
 
-    // Simulate API call
-    setTimeout(() => {
-      setShowToast(true);
-    }, 500);
+      if (res.data.success && res.data.token) {
+        localStorage.setItem('authToken', res.data.token);
+        setShowToast({
+          visible: true,
+          message: 'Sign Up Successful!',
+          icon: <FaCheckCircle />,
+        });
+        return;
+      }
+      throw new Error(res.data.message || 'Registration failed');
+    } catch (err) {
+      console.error('Registration Error', err);
+      const msg = err.response?.data?.message || err.message || 'Registration failed';
+      setShowToast({ visible: true, message: msg, icon: <FaCheckCircle /> });
+    }
   };
 
   return (
     <div className='min-h-screen flex items-center justify-center bg-[#1a120b] p-4'>
-      {showToast && (
-        <AwesomeToast message="Sign Up Successful" icon={<FaCheckCircle />} />
+      {showToast.visible && (
+        <AwesomeToast message={showToast.message} icon={showToast.icon} />
       )}
 
       {/* Form container */}
@@ -105,7 +116,7 @@ const Signup = () => {
               />
               <span
                 className='absolute right-4 top-1/2 -translate-y-1/2 text-amber-400 cursor-pointer'
-                onClick={() => setShowPassword(prev => !prev)}
+                onClick={() => setShowPassword((prev) => !prev)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>

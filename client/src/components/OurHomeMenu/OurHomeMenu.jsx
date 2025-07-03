@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useCart } from '../../CartContext/CartContext';
-import { dummyMenuData } from '../../assets/drive-download-20250620T152333Z-1-001/OmhDD';
 import { FaPlus, FaRupeeSign, FaStar, FaHeart } from 'react-icons/fa';
 import { HiPlus, HiMinus } from 'react-icons/hi';
 import './OurHomeMenu.css';
@@ -9,9 +9,25 @@ const categories = ['Breakfast', 'Lunch', 'Dinner', 'Mexican', 'Italian', 'Desse
 
 const OurHomeMenu = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
-  const displayItems = (dummyMenuData[activeCategory] || []).slice(0, 4);
   const { cartItems, addToCart, removeFromCart, updateQuantity } = useCart();
-  const getQuantity = id => (cartItems.find(i => i.id === id)?.quantity || 0);
+  const [menuData, setMenuData] = useState({});
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/items')
+      .then(res => {
+        const grouped = res.data.reduce((acc, item) => {
+          acc[item.category] = acc[item.category] || [];
+          acc[item.category].push(item);
+          return acc;
+        }, {});
+        setMenuData(grouped);
+      })
+      .catch(console.error);
+  }, []);
+
+  const getCartEntry = id => cartItems.find(ci => ci.item._id === id);
+  const getQuantity = id => getCartEntry(id)?.quantity || 0;
+  const displayItems = (menuData[activeCategory] || []).slice(0, 4);
 
   return (
     <div className="bg-gradient-to-br from-[#1a120b] via-[#2a1e14] to-[#362016] min-h-screen py-16 px-4 sm:px-6 lg:px-8">
@@ -41,18 +57,18 @@ const OurHomeMenu = () => {
         </div>
 
         <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4'>
-          {displayItems.map((item, i) => {
-            const quantity = getQuantity(item.id);
-            const cartItem = cartItems.find(ci => ci.id === item.id);
+          {displayItems.map((item) => {
+            const qty = getQuantity(item._id);
+            const cartEntry = getCartEntry(item._id);
+
             return (
-              <div key={item.id} className='relative bg-amber-900/20 rounded-2xl overflow-hidden border border-amber-800/30 backdrop-blur-sm flex flex-col transition-all duration-500'>
+              <div key={item._id} className='relative bg-amber-900/20 rounded-2xl overflow-hidden border border-amber-800/30 backdrop-blur-sm flex flex-col transition-all duration-500'>
                 <div className='relative h-48 sm:h-56 md:h-60 flex items-center justify-center bg-black/10'>
                   <img
-                    src={item.image}
+                    src={item.imageUrl}
                     alt={item.name}
                     className='max-h-full max-w-full object-contain transition-all duration-700'
                   />
-
                   <div className='absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90' />
                   <div className='absolute bottom-4 left-4 right-4 flex justify-between items-center bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full'>
                     <span className='flex items-center gap-2 text-amber-400'>
@@ -73,19 +89,23 @@ const OurHomeMenu = () => {
                     <FaRupeeSign /> {item.price}
                   </div>
 
-                  {cartItem ? (
+                  {cartEntry ? (
                     <div className='flex items-center gap-3 mt-4'>
                       <button
-                        onClick={() => quantity > 1 ? updateQuantity(item.id, quantity - 1) : removeFromCart(item.id)}
+                        onClick={() =>
+                          qty > 1
+                            ? updateQuantity(item._id, qty - 1)
+                            : removeFromCart(item._id)
+                        }
                         className='w-8 h-8 rounded-full bg-amber-900 flex items-center justify-center hover:bg-amber-800/50 transition-all duration-200 active:scale-95'
                       >
                         <HiMinus className='w-4 h-4 text-amber-100' />
                       </button>
                       <span className='w-8 text-center text-amber-100 font-cinzel'>
-                        {quantity}
+                        {qty}
                       </span>
                       <button
-                        onClick={() => updateQuantity(item.id, quantity + 1)}
+                        onClick={() => updateQuantity(item._id, qty + 1)}
                         className='w-8 h-8 rounded-full bg-amber-900 flex items-center justify-center hover:bg-amber-800/50 transition-all duration-200 active:scale-95'
                       >
                         <HiPlus className='w-4 h-4 text-amber-100' />
@@ -93,7 +113,9 @@ const OurHomeMenu = () => {
                     </div>
                   ) : (
                     <button
-                      onClick={() => addToCart({ ...item, price: parseFloat(item.price) }, 1)}
+                      onClick={() =>
+                        addToCart({ ...item, price: parseFloat(item.price) }, 1)
+                      }
                       className='relative mt-4 px-4 py-2 bg-amber-500 text-[#2D1B0E] font-semibold rounded-md hover:scale-105 transition-transform flex items-center gap-2'
                     >
                       <div className='absolute inset-0 bg-gradient-to-r from-amber-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300' />

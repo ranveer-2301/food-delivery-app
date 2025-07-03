@@ -7,7 +7,9 @@ import Menu from './pages/Menu/Menu.jsx';
 import Cart from './pages/Cart/Cart.jsx';
 import SignUp from './components/SignUp/SignUp.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
-
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage.jsx';
+import MyOrderPage from './pages/MyOrderPage/MyOrderPage.jsx';
+import VerifyPaymentPage from './pages/VerifyPaymentPage/VerifyPaymentPage.jsx'
 
 const App = () => {
   return (
@@ -20,10 +22,15 @@ const App = () => {
       <Route path='/login' element={<Home />} />
       <Route path='/signup' element={<SignUp />} />
 
+      {/* PAYMENT VERIFICATION */}
+      <Route path='/myorder/verify' element={< VerifyPaymentPage />} />
+
       <Route path='/cart' element={
         <PrivateRoute>
           <Cart /> 
         </PrivateRoute> } />
+        <Route path='/checkout' element={ <PrivateRoute><CheckoutPage /></PrivateRoute> } />
+        <Route path='/myorder' element={ <PrivateRoute><MyOrderPage /></PrivateRoute> } />
     </Routes>
   )
 }
