@@ -18,7 +18,7 @@ router.route('/clear')
     .delete(authMiddleware, clearCart);
 
 router.route('/:id')
-    .put(authMiddleware, updateCartItem)
+    .post(authMiddleware, updateCartItem)
     .delete(authMiddleware, deleteCartItem);
 
 module.exports = router;

@@ -87,7 +87,7 @@ import Margarita from "./Margarita.png"
 export const dummyMenuData = {
   Breakfast: [
     {
-      id: 'breakfast-1',
+      _id: 'breakfast-1',
       name: 'Eggs Benedict',
       price: '80',
       rating: 4.2,
@@ -95,7 +95,7 @@ export const dummyMenuData = {
       description: 'Poached eggs over toasted English muffins with hollandaise sauce.',
     },
     {
-      id: 'breakfast-2',
+      _id: 'breakfast-2',
       name: 'Avocado Toast',
       price: '70',
       rating: 4.5,
@@ -103,7 +103,7 @@ export const dummyMenuData = {
       description: 'Toasted bread topped with smashed avocado and spices.',
     },
     {
-      id: 'breakfast-3',
+      _id: 'breakfast-3',
       name: 'Pancakes with Maple Syrup',
       price: '60',
       rating: 4.3,
@@ -111,7 +111,7 @@ export const dummyMenuData = {
       description: 'Fluffy pancakes drizzled with pure maple syrup.',
     },
     {
-      id: 'breakfast-4',
+      _id: 'breakfast-4',
       name: 'Fruit Smoothie Bowl',
       price: '90',
       rating: 4.6,
@@ -119,7 +119,7 @@ export const dummyMenuData = {
       description: 'A bowl full of fresh fruits blended into a refreshing smoothie.',
     },
     {
-      id: 'breakfast-5',
+      _id: 'breakfast-5',
       name: 'Sunny Oats',
       price: '65',
       rating: 4.4,
@@ -127,7 +127,7 @@ export const dummyMenuData = {
       description: 'Creamy oatmeal swirled with cinnamon and honey.',
     },
     {
-      id: 'breakfast-6',
+      _id: 'breakfast-6',
       name: ' Banana Toast',
       price: '60',
       rating: 4.3,
@@ -135,7 +135,7 @@ export const dummyMenuData = {
       description: 'Toast topped with peanut butter and banana slices.',
     },
     {
-      id: 'breakfast-7',
+      _id: 'breakfast-7',
       name: 'Bagel Smash',
       price: '80',
       rating: 4.5,
@@ -143,7 +143,7 @@ export const dummyMenuData = {
       description: 'Toasted bagel with cream cheese and smoked salmon.',
     },
     {
-      id: 'breakfast-8',
+      _id: 'breakfast-8',
       name: 'Fruit Waffle',
       price: '75',
       rating: 4.7,
@@ -151,7 +151,7 @@ export const dummyMenuData = {
       description: 'Crispy waffle topped with strawberries and whipped cream.',
     },
     {
-      id: 'breakfast-9',
+      _id: 'breakfast-9',
       name: 'French Toast',
       price: '87',
       rating: 4.4,
@@ -159,7 +159,7 @@ export const dummyMenuData = {
       description: 'Classic French toast served with powdered sugar and berries.',
     },
     {
-      id: 'breakfast-10',
+      _id: 'breakfast-10',
       name: 'Breakfast Burrito',
       price: '99',
       rating: 4.2,
@@ -167,7 +167,7 @@ export const dummyMenuData = {
       description: 'Eggs, cheese, and veggies wrapped in a soft tortilla.',
     },
     {
-      id: 'breakfast-11',
+      _id: 'breakfast-11',
       name: 'Bagel with Lox',
       price: '10',
       rating: 4.5,
@@ -175,7 +175,7 @@ export const dummyMenuData = {
       description: 'Toasted bagel topped with smoked salmon, cream cheese, and capers.',
     },
     {
-      id: 'breakfast-12',
+      _id: 'breakfast-12',
       name: 'Granola Parfait',
       price: '75',
       rating: 4.3,
@@ -185,7 +185,7 @@ export const dummyMenuData = {
   ],
   Lunch: [
     {
-      id: 'lunch-1',
+      _id: 'lunch-1',
       name: 'Chicken Caesar Salad',
       price: '199',
       rating: 4.4,
@@ -193,7 +193,7 @@ export const dummyMenuData = {
       description: 'Crisp romaine with grilled chicken, parmesan, and Caesar dressing.',
     },
     {
-      id: 'lunch-2',
+      _id: 'lunch-2',
       name: 'Club Sandwich',
       price: '150',
       rating: 4.3,
@@ -201,7 +201,7 @@ export const dummyMenuData = {
       description: 'Triple-decker sandwich with turkey, bacon, and fresh veggies.',
     },
     {
-      id: 'lunch-3',
+      _id: 'lunch-3',
       name: 'Veggie Wrap',
       price: '109',
       rating: 4.2,
@@ -209,7 +209,7 @@ export const dummyMenuData = {
       description: 'A wrap filled with a mix of seasonal vegetables and hummus.',
     },
     {
-      id: 'lunch-4',
+      _id: 'lunch-4',
       name: 'Grilled Cheese Sandwich',
       price: '89',
       rating: 4.0,
@@ -217,7 +217,7 @@ export const dummyMenuData = {
       description: 'Classic grilled cheese with melted cheddar on sourdough.',
     },
     {
-      id: 'lunch-5',
+      _id: 'lunch-5',
       name: 'Grilled Salmon Bowl',
       price: '225',
       rating: 4.7,
@@ -225,7 +225,7 @@ export const dummyMenuData = {
       description: 'Grilled salmon over quinoa, roasted veggies, and lemon-dill sauce.',
     },
     {
-      id: 'lunch-6',
+      _id: 'lunch-6',
       name: 'Spicy Beef Tacos',
       price: '180',
       rating: 4.5,
@@ -233,7 +233,7 @@ export const dummyMenuData = {
       description: 'Soft tortillas filled with seasoned beef, salsa, and avocado.',
     },
     {
-      id: 'lunch-7',
+      _id: 'lunch-7',
       name: 'Sushi Combo',
       price: '240',
       rating: 4.8,
@@ -241,7 +241,7 @@ export const dummyMenuData = {
       description: 'Assorted sushi rolls with tuna, salmon, avocado, and soy sauce.',
     },
     {
-      id: 'lunch-8',
+      _id: 'lunch-8',
       name: 'Red Chicken Curry',
       price: '89',
       rating: 4.0,
@@ -249,7 +249,7 @@ export const dummyMenuData = {
       description: ' a balance of creamy, sweet, and slightly spicy notes.',
     },
     {
-      id: 'lunch-9',
+      _id: 'lunch-9',
       name: 'Turkey Panini',
       price: '130',
       rating: 4.5,
@@ -257,7 +257,7 @@ export const dummyMenuData = {
       description: 'Pressed panini with turkey, Swiss cheese, and pesto.',
     },
     {
-      id: 'lunch-10',
+      _id: 'lunch-10',
       name: 'Quinoa Salad',
       price: '118',
       rating: 4.3,
@@ -265,7 +265,7 @@ export const dummyMenuData = {
       description: 'Healthy salad with quinoa, mixed greens, and vinaigrette.',
     },
     {
-      id: 'lunch-11',
+      _id: 'lunch-11',
       name: 'Pasta Salad',
       price: '100',
       rating: 4.2,
@@ -273,7 +273,7 @@ export const dummyMenuData = {
       description: 'Chilled pasta salad with fresh vegetables and Italian dressing.',
     },
     {
-      id: 'lunch-12',
+      _id: 'lunch-12',
       name: 'Fish Tacos',
       price: '129',
       rating: 4.4,
@@ -283,7 +283,7 @@ export const dummyMenuData = {
   ],
   Dinner: [
     {
-      id: 'dinner-1',
+      _id: 'dinner-1',
       name: 'Grilled Ribeye Steak',
       price: '249',
       rating: 4.7,
@@ -291,7 +291,7 @@ export const dummyMenuData = {
       description: 'Juicy ribeye steak grilled to perfection.',
     },
     {
-      id: 'dinner-2',
+      _id: 'dinner-2',
       name: 'Salmon Fillet',
       price: '220',
       rating: 4.5,
@@ -299,7 +299,7 @@ export const dummyMenuData = {
       description: 'Fresh salmon fillet with a lemon butter sauce.',
     },
     {
-      id: 'dinner-3',
+      _id: 'dinner-3',
       name: 'Roast Chicken',
       price: '199',
       rating: 4.4,
@@ -307,7 +307,7 @@ export const dummyMenuData = {
       description: 'Herb-roasted chicken served with seasonal vegetables.',
     },
     {
-      id: 'dinner-4',
+      _id: 'dinner-4',
       name: 'Pasta Primavera',
       price: '199',
       rating: 4.3,
@@ -315,7 +315,7 @@ export const dummyMenuData = {
       description: 'Pasta with fresh seasonal vegetables in a light sauce.',
     },
     {
-      id: 'dinner-5',
+      _id: 'dinner-5',
       name: 'Chicken Parmesan',
       price: '199',
       rating: 4.5,
@@ -323,7 +323,7 @@ export const dummyMenuData = {
       description: 'Crispy breaded chicken topped with marinara sauce and melted mozzarella.',
     },
     {
-      id: 'dinner-6',
+      _id: 'dinner-6',
       name: 'Pesto Pasta with Shrimp',
       price: '219',
       rating: 4.7,
@@ -331,7 +331,7 @@ export const dummyMenuData = {
       description: 'Linguine tossed in a vibrant pesto sauce with succulent shrimp.',
     },
     {
-      id: 'dinner-7',
+      _id: 'dinner-7',
       name: 'Garlic Butter Lamb Chops',
       price: '269',
       rating: 4.7,
@@ -339,7 +339,7 @@ export const dummyMenuData = {
       description: 'Tender lamb chops glazed with rosemary garlic butter.',
     },
     {
-      id: 'dinner-8',
+      _id: 'dinner-8',
       name: 'Vegetarian Stuffed Peppers',
       price: '189',
       rating: 4.5,
@@ -347,7 +347,7 @@ export const dummyMenuData = {
       description: 'Bell peppers filled with a savory mix of quinoa, black beans, and vegetables.',
     },
     {
-      id: 'dinner-9',
+      _id: 'dinner-9',
       name: 'Beef Bourguignon',
       price: '250',
       rating: 4.6,
@@ -355,7 +355,7 @@ export const dummyMenuData = {
       description: 'Classic French beef stew with red wine and mushrooms.',
     },
     {
-      id: 'dinner-10',
+      _id: 'dinner-10',
       name: 'Vegetable Stir Fry',
       price: '150',
       rating: 4.2,
@@ -363,7 +363,7 @@ export const dummyMenuData = {
       description: 'Crispy vegetables stir-fried in a tangy sauce.',
     },
     {
-      id: 'dinner-11',
+      _id: 'dinner-11',
       name: 'Shrimp Scampi',
       price: '199',
       rating: 4.5,
@@ -371,7 +371,7 @@ export const dummyMenuData = {
       description: 'Shrimp cooked in garlic butter sauce over linguine.',
     },
     {
-      id: 'dinner-12',
+      _id: 'dinner-12',
       name: 'Lamb Chops',
       price: '28.50',
       rating: 4.8,
@@ -381,7 +381,7 @@ export const dummyMenuData = {
   ],
   Mexican: [
     {
-      id: 'mexican-1',
+      _id: 'mexican-1',
       name: 'Tacos al Pastor',
       price: '11.99',
       rating: 4.6,
@@ -389,7 +389,7 @@ export const dummyMenuData = {
       description: 'Tacos with marinated pork, pineapple, and cilantro.',
     },
     {
-      id: 'mexican-2',
+      _id: 'mexican-2',
       name: 'Chicken Quesadilla',
       price: '100',
       rating: 4.4,
@@ -397,7 +397,7 @@ export const dummyMenuData = {
       description: 'Grilled quesadilla filled with chicken, cheese, and salsa.',
     },
     {
-      id: 'mexican-3',
+      _id: 'mexican-3',
       name: 'Enchiladas',
       price: '199',
       rating: 4.5,
@@ -405,7 +405,7 @@ export const dummyMenuData = {
       description: 'Corn tortillas rolled around a filling and smothered in spicy sauce.',
     },
     {
-      id: 'mexican-4',
+      _id: 'mexican-4',
       name: 'Fajitas',
       price: '13.50',
       rating: 4.7,
@@ -413,7 +413,7 @@ export const dummyMenuData = {
       description: 'Sizzling steak or chicken served with peppers and onions.',
     },
     {
-      id: 'mexican-5',
+      _id: 'mexican-5',
       name: 'Chiles Rellenos',
       price: '12.49',
       rating: 4.5,
@@ -421,7 +421,7 @@ export const dummyMenuData = {
       description: 'Roasted poblano peppers stuffed with cheese, lightly battered and fried, served with a tangy tomato sauce.',
     },
     {
-      id: 'mexican-6',
+      _id: 'mexican-6',
       name: 'Mole Poblano',
       price: '14.99',
       rating: 4.8,
@@ -429,7 +429,7 @@ export const dummyMenuData = {
       description: 'Tender chicken simmered in a complex, rich mole sauce with hints of chocolate and spices, served with rice.',
     },
     {
-      id: 'mexican-7',
+      _id: 'mexican-7',
       name: 'Pozole Rojo',
       price: '13.99',
       rating: 4.8,
@@ -437,7 +437,7 @@ export const dummyMenuData = {
       description: 'Traditional soup with hominy, pork, and red chiles, garnished with radish and lime.',
     },
     {
-      id: 'mexican-8',
+      _id: 'mexican-8',
       name: 'Churros',
       price: '8.99',
       rating: 4.7,
@@ -445,7 +445,7 @@ export const dummyMenuData = {
       description: 'Fried dough pastries rolled in cinnamon sugar, served with chocolate sauce.',
     },
     {
-      id: 'mexican-9',
+      _id: 'mexican-9',
       name: 'Nachos',
       price: '99',
       rating: 4.3,
@@ -453,7 +453,7 @@ export const dummyMenuData = {
       description: 'Crispy tortilla chips loaded with cheese and toppings.',
     },
     {
-      id: 'mexican-10',
+      _id: 'mexican-10',
       name: 'Burrito',
       price: '150',
       rating: 4.2,
@@ -461,7 +461,7 @@ export const dummyMenuData = {
       description: 'A large flour tortilla filled with beans, rice, and meat.',
     },
     {
-      id: 'mexican-11',
+      _id: 'mexican-11',
       name: 'Tamales',
       price: '89',
       rating: 4.4,
@@ -469,7 +469,7 @@ export const dummyMenuData = {
       description: 'Steamed masa filled with meats or vegetables.',
     },
     {
-      id: 'mexican-12',
+      _id: 'mexican-12',
       name: 'Chilaquiles',
       price: '199',
       rating: 4.5,
@@ -479,7 +479,7 @@ export const dummyMenuData = {
   ],
   Italian: [
     {
-      id: 'italian-1',
+      _id: 'italian-1',
       name: 'Spaghetti Carbonara',
       price: '199',
       rating: 4.7,
@@ -487,7 +487,7 @@ export const dummyMenuData = {
       description: 'Classic pasta with eggs, cheese, pancetta, and pepper.',
     },
     {
-      id: 'italian-2',
+      _id: 'italian-2',
       name: 'Lasagna',
       price: '150',
       rating: 4.6,
@@ -495,7 +495,7 @@ export const dummyMenuData = {
       description: 'Layers of pasta with meat sauce, cheese, and béchamel.',
     },
     {
-      id: 'italian-3',
+      _id: 'italian-3',
       name: 'Risotto',
       price: '699',
       rating: 4.5,
@@ -503,7 +503,7 @@ export const dummyMenuData = {
       description: 'Creamy Arborio rice cooked with broth and parmesan.',
     },
     {
-      id: 'italian-4',
+      _id: 'italian-4',
       name: 'Margherita Pizza',
       price: '150',
       rating: 4.8,
@@ -511,7 +511,7 @@ export const dummyMenuData = {
       description: 'Pizza topped with tomato sauce, mozzarella, and basil.',
     },
     {
-      id: 'italian-5',
+      _id: 'italian-5',
       name: 'Penne Arrabbiata',
       price: '189',
       rating: 4.6,
@@ -519,7 +519,7 @@ export const dummyMenuData = {
       description: 'Penne pasta tossed in a spicy tomato sauce infused with garlic and red chili flakes.',
     },
     {
-      id: 'italian-6',
+      _id: 'italian-6',
       name: 'Caprese Salad',
       price: '169',
       rating: 4.5,
@@ -527,7 +527,7 @@ export const dummyMenuData = {
       description: 'Fresh slices of tomato, mozzarella, and basil drizzled with extra virgin olive oil and balsamic glaze.',
     },
     {
-      id: 'italian-7',
+      _id: 'italian-7',
       name: 'Eggplant Parmesan',
       price: '209',
       rating: 4.7,
@@ -535,7 +535,7 @@ export const dummyMenuData = {
       description: 'Breaded eggplant layered with marinara sauce, mozzarella, and Parmesan cheese, baked to perfection.',
     },
     {
-      id: 'italian-8',
+      _id: 'italian-8',
       name: 'Focaccia Bread',
       price: '129',
       rating: 4.4,
@@ -543,7 +543,7 @@ export const dummyMenuData = {
       description: 'Soft, herbed focaccia with a crispy crust, drizzled with olive oil and sprinkled with sea salt.',
     },
     {
-      id: 'italian-9',
+      _id: 'italian-9',
       name: 'Fettuccine Alfredo',
       price: '140',
       rating: 4.4,
@@ -551,7 +551,7 @@ export const dummyMenuData = {
       description: 'Pasta in a rich and creamy Alfredo sauce.',
     },
     {
-      id: 'italian-10',
+      _id: 'italian-10',
       name: 'Pesto Pasta',
       price: '599',
       rating: 4.3,
@@ -559,7 +559,7 @@ export const dummyMenuData = {
       description: 'Pasta tossed in a vibrant basil pesto sauce.',
     },
     {
-      id: 'italian-11',
+      _id: 'italian-11',
       name: 'Gnocchi',
       price: '999',
       rating: 4.2,
@@ -567,7 +567,7 @@ export const dummyMenuData = {
       description: 'Soft potato dumplings served with a marinara sauce.',
     },
     {
-      id: 'italian-12',
+      _id: 'italian-12',
       name: 'Osso Buco',
       price: '18.50',
       rating: 4.7,
@@ -577,7 +577,7 @@ export const dummyMenuData = {
   ],
   Desserts: [
     {
-      id: 'desserts-1',
+      _id: 'desserts-1',
       name: 'Tiramisu',
       price: '650',
       rating: 4.7,
@@ -585,7 +585,7 @@ export const dummyMenuData = {
       description: 'Classic Italian dessert with coffee and mascarpone.',
     },
     {
-      id: 'desserts-2',
+      _id: 'desserts-2',
       name: 'Gelato',
       price: '599',
       rating: 4.5,
@@ -593,7 +593,7 @@ export const dummyMenuData = {
       description: 'Italian-style ice cream available in various flavors.',
     },
     {
-      id: 'desserts-3',
+      _id: 'desserts-3',
       name: 'Cannoli',
       price: '700',
       rating: 4.6,
@@ -601,7 +601,7 @@ export const dummyMenuData = {
       description: 'Crispy pastry tubes filled with sweet ricotta cream.',
     },
     {
-      id: 'desserts-4',
+      _id: 'desserts-4',
       name: 'Panna Cotta',
       price: '499',
       rating: 4.4,
@@ -609,15 +609,15 @@ export const dummyMenuData = {
       description: 'Smooth, creamy dessert topped with berry compote.',
     },
     {
-      id: 'desserts-5',
+      _id: 'desserts-5',
       name: 'Pavlova',
       price: '680',
       rating: 4.5,
       image: Pavlova,
-      description: 'Crispy meringue with a soft, light inside, topped with fresh fruits and whipped cream.',
+      description: 'Crispy meringue with a soft, light ins_ide, topped with fresh fruits and whipped cream.',
     },
     {
-      id: 'desserts-6',
+      _id: 'desserts-6',
       name: 'Chocolate Lava Cake',
       price: '750',
       rating: 4.8,
@@ -625,15 +625,15 @@ export const dummyMenuData = {
       description: 'Warm chocolate cake with a molten center, served with vanilla ice cream.',
     },
     {
-      id: 'desserts-7',
+      _id: 'desserts-7',
       name: 'Baklava',
       price: '600',
       rating: 4.7,
       image: Baklava,
-      description: 'Layered pastry with chopped nuts and honey, a Middle Eastern delight.',
+      description: 'Layered pastry with chopped nuts and honey, a M_iddle Eastern delight.',
     },
     {
-      id: 'desserts-8',
+      _id: 'desserts-8',
       name: 'Strawberry Shortcake',
       price: '680',
       rating: 4.5,
@@ -641,7 +641,7 @@ export const dummyMenuData = {
       description: 'Fluffy cake layered with fresh strawberries and whipped cream.',
     },
     {
-      id: 'desserts-9',
+      _id: 'desserts-9',
       name: 'Cheesecake',
       price: '99',
       rating: 4.5,
@@ -649,7 +649,7 @@ export const dummyMenuData = {
       description: 'Rich cheesecake with a graham cracker crust.',
     },
     {
-      id: 'desserts-10',
+      _id: 'desserts-10',
       name: 'Chocolate Mousse',
       price: '650',
       rating: 4.4,
@@ -657,7 +657,7 @@ export const dummyMenuData = {
       description: 'Light and airy chocolate mousse with whipped cream.',
     },
     {
-      id: 'desserts-11',
+      _id: 'desserts-11',
       name: 'Profiteroles',
       price: '725',
       rating: 4.3,
@@ -665,7 +665,7 @@ export const dummyMenuData = {
       description: 'Cream-filled pastry puffs drizzled with chocolate sauce.',
     },
     {
-      id: 'desserts-12',
+      _id: 'desserts-12',
       name: 'Ricotta Pie',
       price: '675',
       rating: 4.2,
@@ -675,7 +675,7 @@ export const dummyMenuData = {
   ],
   Drinks: [
     {
-      id: 'drinks-1',
+      _id: 'drinks-1',
       name: 'Iced Latte',
       price: '50',
       rating: 4.0,
@@ -683,7 +683,7 @@ export const dummyMenuData = {
       description: 'Cool and refreshing espresso-based iced latte.',
     },
     {
-      id: 'drinks-2',
+      _id: 'drinks-2',
       name: 'Mojito',
       price: '99',
       rating: 4.3,
@@ -691,7 +691,7 @@ export const dummyMenuData = {
       description: 'Classic mojito with mint, lime, and rum.',
     },
     {
-      id: 'drinks-3',
+      _id: 'drinks-3',
       name: 'Smoothie',
       price: '60',
       rating: 4.2,
@@ -699,7 +699,7 @@ export const dummyMenuData = {
       description: 'A blended mix of fruits for a refreshing drink.',
     },
     {
-      id: 'drinks-4',
+      _id: 'drinks-4',
       name: 'Iced Tea',
       price: '39',
       rating: 4.0,
@@ -707,7 +707,7 @@ export const dummyMenuData = {
       description: 'Chilled iced tea with a hint of lemon.',
     },
     {
-      id: 'drinks-5',
+      _id: 'drinks-5',
       name: 'Mocha Frappuccino',
       price: '55',
       rating: 4.1,
@@ -715,7 +715,7 @@ export const dummyMenuData = {
       description: 'Chilled coffee mixed with chocolate and blended with ice.',
     },
     {
-      id: 'drinks-6',
+      _id: 'drinks-6',
       name: 'Green Tea Smoothie',
       price: '60',
       rating: 4.3,
@@ -723,7 +723,7 @@ export const dummyMenuData = {
       description: 'A vibrant mix of green tea, fruits, and a splash of honey for sweetness.',
     },
     {
-      id: 'drinks-7',
+      _id: 'drinks-7',
       name: 'Caramel Macchiato',
       price: '55',
       rating: 4.3,
@@ -731,7 +731,7 @@ export const dummyMenuData = {
       description: 'Layered espresso with steamed milk, topped with caramel drizzle.',
     },
     {
-      id: 'drinks-8',
+      _id: 'drinks-8',
       name: 'Strawberry Milkshake',
       price: '65',
       rating: 4.4,
@@ -739,7 +739,7 @@ export const dummyMenuData = {
       description: 'Creamy milkshake loaded with fresh strawberries and a hint of vanilla.',
     },
     {
-      id: 'drinks-9',
+      _id: 'drinks-9',
       name: 'Lemonade',
       price: '45',
       rating: 4.1,
@@ -747,7 +747,7 @@ export const dummyMenuData = {
       description: 'Freshly squeezed lemonade with a tangy kick.',
     },
     {
-      id: 'drinks-10',
+      _id: 'drinks-10',
       name: 'Espresso',
       price: '30',
       rating: 4.2,
@@ -755,7 +755,7 @@ export const dummyMenuData = {
       description: 'Strong and rich espresso shot to start your day.',
     },
     {
-      id: 'drinks-11',
+      _id: 'drinks-11',
       name: 'Margarita',
       price: '70',
       rating: 4.3,
@@ -763,7 +763,7 @@ export const dummyMenuData = {
       description: 'Refreshing margarita with tequila, lime, and a salt rim.',
     },
     {
-      id: 'drinks-12',
+      _id: 'drinks-12',
       name: 'Cappuccino',
       price: '49',
       rating: 4.2,

@@ -25,6 +25,7 @@ const OurHomeMenu = () => {
       .catch(console.error);
   }, []);
 
+  // USE ID TO FIND AND UPADATE
   const getCartEntry = id => cartItems.find(ci => ci.item._id === id);
   const getQuantity = id => getCartEntry(id)?.quantity || 0;
   const displayItems = (menuData[activeCategory] || []).slice(0, 4);
@@ -94,8 +95,8 @@ const OurHomeMenu = () => {
                       <button
                         onClick={() =>
                           qty > 1
-                            ? updateQuantity(item._id, qty - 1)
-                            : removeFromCart(item._id)
+                            ? updateQuantity(cartEntry._id, qty - 1)
+                            : removeFromCart(cartEntry._id)
                         }
                         className='w-8 h-8 rounded-full bg-amber-900 flex items-center justify-center hover:bg-amber-800/50 transition-all duration-200 active:scale-95'
                       >
@@ -105,7 +106,7 @@ const OurHomeMenu = () => {
                         {qty}
                       </span>
                       <button
-                        onClick={() => updateQuantity(item._id, qty + 1)}
+                        onClick={() => updateQuantity(cartEntry._id, qty + 1)}
                         className='w-8 h-8 rounded-full bg-amber-900 flex items-center justify-center hover:bg-amber-800/50 transition-all duration-200 active:scale-95'
                       >
                         <HiPlus className='w-4 h-4 text-amber-100' />
@@ -114,7 +115,7 @@ const OurHomeMenu = () => {
                   ) : (
                     <button
                       onClick={() =>
-                        addToCart({ ...item, price: parseFloat(item.price) }, 1)
+                        addToCart(item, 1)
                       }
                       className='relative mt-4 px-4 py-2 bg-amber-500 text-[#2D1B0E] font-semibold rounded-md hover:scale-105 transition-transform flex items-center gap-2'
                     >

@@ -34,9 +34,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser());
 
-// Database connection
-connectDB();
-
 // Routes
 app.use('/api/user', userRouter)
 
@@ -54,4 +51,12 @@ app.get('/', (req, res) => {
   res.send('API is working!');
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Database connection
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}).catch(err => {
+  console.error('Failed to start server due to DB connection error');
+});

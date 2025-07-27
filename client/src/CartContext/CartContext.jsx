@@ -81,6 +81,7 @@ export const CartProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` }
       }
     )
+    console.log("res in addtocart", res)
     dispatch({ type: 'ADD_ITEM', payload: res.data });
   }, []);
 
@@ -97,8 +98,9 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   const updateQuantity = useCallback(async(_id, qty) => {
+    console.log("qty", qty)
     const token = localStorage.getItem('authToken')
-    const res = await axios.put(
+    const res = await axios.post(
       `http://localhost:5000/api/cart/${_id}`,
       { quantity: qty },
       {
@@ -106,6 +108,7 @@ export const CartProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` }
       }
     )
+    console.log("res in update qantity", res)
     dispatch({ type: 'UPDATE_ITEM', payload: res.data });
   }, []);
 
