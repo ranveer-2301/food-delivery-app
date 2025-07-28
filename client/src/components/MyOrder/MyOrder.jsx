@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa';
 import { FiBox, FiCheckCircle, FiClock, FiDivideCircle, FiMapPin, FiTruck, FiUser } from 'react-icons/fi';
 import {Link} from 'react-router-dom';
-import Axios from 'Axios';
+import axios from 'axios';
 
 const MyOrder = () => {
   
