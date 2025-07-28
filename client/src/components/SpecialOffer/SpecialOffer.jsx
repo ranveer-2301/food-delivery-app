@@ -4,18 +4,20 @@ import { useCart } from '../../CartContext/CartContext';
 import { FaStar, FaHeart, FaRupeeSign, FaPlus, FaFire } from 'react-icons/fa';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import FloatingParticle from '../FloatingParticle/FloatingParticle';
+import axios from 'axios';
 
 const SpecialOffer = () => {
   const [showAll, setShowAll] = useState(false);
-  const initialData = [...cardData, ...additionalData];
+  // const initialData = [...cardData, ...additionalData];
   const { cartItems, addToCart, removeFromCart, updateQuantity } = useCart();
-
+  const [initialData, setInitialData] = useState([]);
+  // const[Quantity, setQuantity] = useState(null)
 
   const fetchMenus = async() => {
       try {
         const res = await axios.get("http://localhost:5000/api/items");
         console.log("res", res);
-        setDisplayItems(res.data)
+        setInitialData(res.data)
       } catch (error) {
        console.log("error", error) 
       }
@@ -42,9 +44,10 @@ const SpecialOffer = () => {
         {/* PRODUCT CARDS */}
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
           {(showAll ? initialData : initialData.slice(0, 4)).map((item, index) => {
-            const cartItem = cartItems.find(ci => ci._id === item._id);
+            const cartItem = cartItems.find(ci => ci.item._id === item._id);
             const quantity = cartItem ? cartItem.quantity : 0;
-
+            // setQuantity(quantity);
+            console.log("cartItem", cartItem)
             return (
               <div
                 key={`${item.id}-${index}`}
@@ -82,9 +85,11 @@ const SpecialOffer = () => {
                     <div className='flex items-center gap-3 mt-4'>
                       <button
                         onClick={() => quantity > 1 ? updateQuantity(item._id, quantity - 1) : removeFromCart(item._id)}
-                        className='w-8 h-8 rounded-full bg-amber-900 flex items-center justify-center hover:bg-amber-800/50 transition-all duration-200 active:scale-95'
+                        className='w-8 h-8 rounded-full  bg-amber-900 flex items-center justify-center hover:bg-amber-800/50 transition-all duration-200 active:scale-95'
                       >
-                        <HiMinus className='w-4 h-4 text-amber-100' />
+                        <HiMinus 
+                         
+                        className='w-4 h-4 text-amber-100' />
                       </button>
                       <span className='w-8 text-center text-amber-100 font-cinzel'>
                         {quantity}
@@ -98,7 +103,7 @@ const SpecialOffer = () => {
                     </div>
                   ) : (
                     <button
-                      onClick={() => addToCart({ ...item, name: item.title, price: parseFloat(item.price) }, 1)}
+                      onClick={() => addToCart(item, 1)}
                       className='relative mt-4 px-4 py-2 bg-amber-500 text-[#2D1B0E] font-semibold rounded-md hover:scale-105 transition-transform flex items-center gap-2'
                     >
                       <div className='absolute inset-0 bg-gradient-to-r from-amber-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300' />

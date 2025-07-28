@@ -21,7 +21,11 @@ const cartReducer = (state, action) => {
     }
 
     case 'REMOVE_ITEM': {
-      return state.filter(ci => ci._id !== action.payload);
+      console.log("state in remove item ", state);
+      console.log("action.payload", action.payload)
+      const newState =  state.filter(ci => ci.item._id !== action.payload);
+      console.log("newState in remove item ", newState);
+      return newState;
     }
 
     case 'UPDATE_ITEM': {
@@ -100,7 +104,8 @@ export const CartProvider = ({ children }) => {
   const updateQuantity = useCallback(async(_id, qty) => {
     console.log("qty", qty)
     const token = localStorage.getItem('authToken')
-    const res = await axios.post(
+    try {
+          const res = await axios.post(
       `http://localhost:5000/api/cart/${_id}`,
       { quantity: qty },
       {
@@ -110,6 +115,9 @@ export const CartProvider = ({ children }) => {
     )
     console.log("res in update qantity", res)
     dispatch({ type: 'UPDATE_ITEM', payload: res.data });
+    } catch (error) {
+      console.log("error ", error)
+    }
   }, []);
 
   const clearCart = useCallback(async() =>{

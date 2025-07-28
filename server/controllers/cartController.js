@@ -61,8 +61,8 @@ const updateCartItem = asyncHandler(async (req, res) => {
     const cartItem = await CartItem.findOne({ item: req.params.id, user: req.user._id });
     console.log("cartItem", cartItem);
     if (!cartItem) {
-        res.status(404);
         // throw new Error('Cart item not found');
+        console.log("cartitem is not found")
         res.status(404)
         .json({
             success:false,
@@ -83,7 +83,8 @@ const updateCartItem = asyncHandler(async (req, res) => {
 
 // DELETE CART ITEM
 const deleteCartItem = asyncHandler(async (req, res) => {
-    const cartItem = await CartItem.findOne({ _id: req.params.id, user: req.user._id });
+    console.log("this is detelecartItem")
+    const cartItem = await CartItem.findOne({ item: req.params.id, user: req.user._id });
     if (!cartItem) {
         res.status(404);
         throw new Error('Cart item not found');

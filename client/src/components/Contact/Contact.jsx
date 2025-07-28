@@ -15,8 +15,25 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    toast.success('Your query has been submitted successfully!', {
+
+    const message = `
+      Name: ${formData.name}
+      Phone: ${formData.phone}
+      Email: ${formData.email}
+      Address: ${formData.address}
+      Dish: ${formData.dish}
+      Query: ${formData.query}
+    `;
+
+    const encodedMessage = encodeURIComponent(message);
+    // WHATSAPP NO.
+    const whatsappNumber = '+918617689127'
+
+    // WHATSAPP API
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+
+    // console.log('Form submitted:', formData);
+    toast.success('OPENING WHATSAPP... ', {
       style: {
         border: '2px solid #f59e0b',
         padding: '16px',
@@ -26,6 +43,9 @@ const Contact = () => {
       },
       iconTheme: { primary: '#f59e0b', secondary: '#fff' }
     });
+
+    window.open(whatsappUrl, '_blank')
+
     setFormData({
       name: '',
       phone: '',
@@ -34,6 +54,7 @@ const Contact = () => {
       dish: '',
       query: ''
     });
+
   };
 
   const handleChange = (e) => {
@@ -81,7 +102,7 @@ const Contact = () => {
                   <h4 className="text-xl text-amber-100 font-semibold">Contact Number</h4>
                   <div className="flex items-center gap-2">
                     <FiGlobe className="text-green-400 text-base" />
-                    <p className="text-sm text-amber-100/80">+91 9065369683, 9304636869</p>
+                    <p className="text-sm text-amber-100/80">+91 9304636869</p>
                   </div>
                 </div>
               </div>
