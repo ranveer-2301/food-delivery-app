@@ -59,7 +59,7 @@ const Order = () => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/orders/getall', {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
         });
 
         const formatted = response.data.map(order => ({
@@ -164,7 +164,7 @@ const Order = () => {
                           {order.items.map((itm, idx) => (
                             <div key={idx} className="flex items-center gap-3 p-2 rounded-lg">
                               <img
-                                src={`http://localhost:5000${itm.item.imageUrl}`}
+                                src={`${itm.item.imageUrl}`}
                                 alt={itm.item.name}
                                 className="w-10 h-10 object-cover rounded-lg"
                               />

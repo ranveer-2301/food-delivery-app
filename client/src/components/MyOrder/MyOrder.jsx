@@ -16,7 +16,7 @@ const MyOrder = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await Axios.get('http://localhost:5000/api/orders', {
+        const response = await axios.get('http://localhost:5000/api/orders', {
           params: {email : user?.email},
           headers: {
             Authorization: `Bearer ${localStorage.getItem('authToken')}`

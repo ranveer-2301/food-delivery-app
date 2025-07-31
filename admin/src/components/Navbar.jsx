@@ -18,7 +18,7 @@ const Navbar = () => {
             </div>
             <button onClick={() => setMenuOpen(!menuOpen)}
               className={styles.menuOpen}>
-              {menuOpen ? <Fix/> : <FiMenu /> } 
+              {menuOpen ? <FiX /> : <FiMenu /> } 
             </button>
 
             <div className={styles.desktopMenu}>
