@@ -1,1 +1,1 @@
-export const backendUrl= "https://food-delivery-app-3l1k.onrender.com/api"
+export const backendUrl= import.meta.env.VITE_BACKEND_URL
