@@ -5,6 +5,7 @@ import { FaStar, FaHeart, FaRupeeSign, FaPlus, FaFire } from 'react-icons/fa';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import FloatingParticle from '../FloatingParticle/FloatingParticle';
 import axios from 'axios';
+import { backendUrl } from '../../constant';
 
 const SpecialOffer = () => {
   const [showAll, setShowAll] = useState(false);
@@ -15,7 +16,7 @@ const SpecialOffer = () => {
 
   const fetchMenus = async() => {
       try {
-        const res = await axios.get("http://localhost:5000/api/items");
+        const res = await axios.get(backendUrl+"/items");
         console.log("res", res);
         setInitialData(res.data)
       } catch (error) {

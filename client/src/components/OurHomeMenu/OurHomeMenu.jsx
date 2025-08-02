@@ -4,6 +4,7 @@ import { useCart } from '../../CartContext/CartContext';
 import { FaPlus, FaRupeeSign, FaStar, FaHeart } from 'react-icons/fa';
 import { HiPlus, HiMinus } from 'react-icons/hi';
 import './OurHomeMenu.css';
+import { backendUrl } from '../../constant';
 
 const categories = ['Breakfast', 'Lunch', 'Dinner', 'Mexican', 'Italian', 'Desserts', 'Drinks'];
 
@@ -11,9 +12,10 @@ const OurHomeMenu = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const { cartItems, addToCart, removeFromCart, updateQuantity } = useCart();
   const [menuData, setMenuData] = useState({});
+  console.log("backendrul", backendUrl)
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/items')
+    axios.get(backendUrl+'/items')
       .then(res => {
         const grouped = res.data.reduce((acc, item) => {
           acc[item.category] = acc[item.category] || [];

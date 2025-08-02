@@ -3,6 +3,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { FiBox, FiCheckCircle, FiClock, FiXCircle, FiMapPin, FiTruck, FiUser } from 'react-icons/fi';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import { backendUrl } from '../../constant';
 
 const MyOrder = () => {
   
@@ -16,7 +17,7 @@ const MyOrder = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/orders', {
+        const response = await axios.get(backendUrl+'/orders', {
           params: {email : user?.email},
           headers: {
             Authorization: `Bearer ${localStorage.getItem('authToken')}`

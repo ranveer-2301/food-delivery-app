@@ -6,7 +6,6 @@ import { iconClass, inputBase } from '../../assets/drive-download-20250620T15233
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const url = 'http://localhost:5000';
 
 const Login = ({ onLoginSuccess, onClose }) => {
   const [showToast, setShowToast] = useState({ visible: false, message: '', isError: false });
@@ -21,7 +20,7 @@ const Login = ({ onLoginSuccess, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${url}/api/user/login`, {
+      const res = await axios.post(backendUrl+`/user/login`, {
         email: formData.email,
         password: formData.password,
       });

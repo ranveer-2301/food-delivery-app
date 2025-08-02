@@ -29,7 +29,7 @@ const VerifyPaymentPage = () => {
       }
 
       try {
-        await axios.get('http://localhost:5000/api/orders/confirm', {
+        await axios.get(backendUrl+'/orders/confirm', {
           params: { session_id },
           headers: authHeaders
         });

@@ -4,7 +4,7 @@ import { FaArrowLeft, FaCheckCircle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
 
 // Replace with your actual backend URL
-const url = 'http://localhost:5000';
+// const url = 'http://localhost:5000';
 
 // Toast Component
 const AwesomeToast = ({ message, icon }) => (
@@ -40,7 +40,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${url}/api/user/register`, formData);
+      const res = await axios.post(backendUrl+`/user/register`, formData);
       console.log('Register Response:', res.data);
 
       if (res.data.success && res.data.token) {

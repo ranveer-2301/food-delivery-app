@@ -34,7 +34,7 @@ const Checkout = () => {
         setLoading(true);
 
         if(paymentStatus === 'success' && sessionId) {
-          axios.post('http://localhost:5000/api/orders/confirm', 
+          axios.post(backendUrl+'/orders/confirm', 
           {sessionId},
           {headers: authHeaders })
           .then(({data}) => {
@@ -81,7 +81,7 @@ const Checkout = () => {
     try {
       if(formData.paymentMethod == 'online') {
         const {data} = await axios.post(
-          'http://localhost:5000/api/orders',
+          backendUrl+'/orders',
           payload,
           {headers: authHeaders}
         );
@@ -89,7 +89,7 @@ const Checkout = () => {
       }else {
         // COD
         const {data} = await axios.post(
-          'http://localhost:5000/api/orders',
+          backendUrl+'/orders',
           payload,
           {headers: authHeaders}
         );

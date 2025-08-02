@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { backendUrl } from '../constant';
 
 const CartContext = createContext();
 
@@ -67,7 +68,7 @@ export const CartProvider = ({ children }) => {
   // HYDRATE FROM SERVER API
   useEffect(() => {
     const token = localStorage.getItem('authToken')
-    axios.get('http://localhost:5000/api/cart', {
+    axios.get(backendUrl+'/cart', {
       withCredentials: true,
       headers: {Authorization : `Bearer ${token}`},
     })
@@ -79,7 +80,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = useCallback(async(item, qty) => {
     const token = localStorage.getItem('authToken')
     const res = await axios.post(
-      'http://localhost:5000/api/cart',
+      backendUrl+'/cart',
       { itemId: item._id, quantity: qty },
       {
         withCredentials: true,
@@ -93,7 +94,7 @@ export const CartProvider = ({ children }) => {
   const removeFromCart = useCallback(async _id => {
     const token = localStorage.getItem('authToken')
     await axios.delete(
-      `http://localhost:5000/api/cart/${_id}`,
+      backendUrl+`/cart/${_id}`,
       {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}` }
@@ -107,7 +108,7 @@ export const CartProvider = ({ children }) => {
     const token = localStorage.getItem('authToken')
     try {
           const res = await axios.post(
-      `http://localhost:5000/api/cart/${_id}`,
+      backendUrl+`/cart/${_id}`,
       { quantity: qty },
       {
         withCredentials: true,
@@ -126,7 +127,7 @@ export const CartProvider = ({ children }) => {
       // console.log("token in clear cart", token)
    try {
      const res = await axios.delete(
-      `http://localhost:5000/api/cart/clear`,
+      backendUrl+`/cart/clear`,
       {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}` }

@@ -4,6 +4,7 @@ import { FaPlus, FaRupeeSign, FaStar, FaHeart } from 'react-icons/fa';
 import { HiPlus, HiMinus } from 'react-icons/hi';
 import './OurMenu.css';
 import axios from 'axios';
+import { backendUrl } from '../../constant';
 
 const categories = ['Breakfast', 'Lunch', 'Dinner', 'South Indian', 'Bihari Special', 'Desserts', 'Drinks'];
 
@@ -17,7 +18,7 @@ const OurMenu = () => {
 
   const fetchMenus = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/items");
+      const res = await axios.get(backendUrl+"/items");
       setDisplayItems(res.data);
     } catch (error) {
       console.log("error", error);
