@@ -21,7 +21,7 @@ const AddItems = () => {
   const [hoverRating, setHoverRating] = useState(0);
 
   const categories = [
-    'Breakfast', 'Lunch', 'Dinner', 'Mexican', 'Italian', 'Desserts', 'Drinks'
+    'Breakfast', 'Lunch', 'Dinner', 'South Indian', 'Bihari Special', 'Desserts', 'Drinks'
   ];
 
   const handleInputChange = (e) => {

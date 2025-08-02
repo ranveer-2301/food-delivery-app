@@ -5,7 +5,7 @@ import { HiPlus, HiMinus } from 'react-icons/hi';
 import './OurMenu.css';
 import axios from 'axios';
 
-const categories = ['Breakfast', 'Lunch', 'Dinner', 'Mexican', 'Italian', 'Desserts', 'Drinks'];
+const categories = ['Breakfast', 'Lunch', 'Dinner', 'South Indian', 'Bihari Special', 'Desserts', 'Drinks'];
 
 const OurMenu = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
@@ -29,7 +29,7 @@ const OurMenu = () => {
   }, []);
 
   const filteredItems = displayItems.filter(item => item.category === activeCategory);
-  const visibleItems = showAll ? filteredItems : filteredItems.slice(0, 4); // ✅ FILTER AND SLICE
+  const visibleItems = showAll ? filteredItems : filteredItems.slice(0, 4); // FILTER AND SLICE
 
   return (
     <div className="bg-gradient-to-br from-[#1a120b] via-[#2a1e14] to-[#362016] min-h-screen py-16 px-4 sm:px-6 lg:px-8">
@@ -49,7 +49,7 @@ const OurMenu = () => {
               key={cat}
               onClick={() => {
                 setActiveCategory(cat);
-                setShowAll(false); // ✅ Reset "Show More" on category change
+                setShowAll(false); // Reset "Show More" on category change
               }}
               className={`px-4 sm:px-6 py-2 rounded-full border-2 transition-all duration-300 transform font-cinzel text-sm sm:text-lg tracking-widest backdrop-blur-sm
                 ${activeCategory === cat ?
