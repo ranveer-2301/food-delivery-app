@@ -11,7 +11,7 @@ const Lists = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const { data } = await axios.get(backendUrl +'/items');
+        const { data } = await axios.get(backendUrl+'/items');
         setItems(data);
       } catch (err) {
         console.error('Error fetching Items:', err);
