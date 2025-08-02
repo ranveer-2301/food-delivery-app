@@ -58,11 +58,12 @@ const AddItems = () => {
           payload.append(key, val);
         }
       });
+      console.log(backendUrl);
 
-      await axios.post(backendUrl+'/items', payload, {
+      const res = await axios.post(backendUrl+'/items', payload, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
-
+      console.log("res ",  res)
       toast.success('Item added successfully! ✅');
 
       setFormData({
