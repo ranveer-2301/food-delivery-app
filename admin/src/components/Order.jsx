@@ -100,6 +100,7 @@ const Order = () => {
         prev.map(o => (o._id === orderId ? { ...o, status: newStatus } : o))
       );
     } catch (err) {
+      console.log("error", err)
       alert(err.response?.data?.message || 'Failed to update order status');
     }
   };
@@ -124,7 +125,7 @@ const Order = () => {
               <tbody>
                 {orders.map(order => {
                   const totalItems = order.items.reduce((s, i) => s + i.quantity, 0);
-                  const totalPrice = order.total ?? order.items.reduce((s, i) => s + i.item.price * i.quantity, 0);
+                  const totalPrice = order.total ?? order.items.reduce((s, i) => s + (i.item.price * i.quantity) + (i.item.price * i.quantity) * 0.05 , 0);
                   const payMethod = paymentMethodDetails[order.paymentMethod?.toLowerCase()] || paymentMethodDetails.default;
                   const payStatusStyle = statusStyles[order.paymentStatus] || statusStyles.processing;
                   const orderStatusStyle = statusStyles[order.status] || statusStyles.processing;

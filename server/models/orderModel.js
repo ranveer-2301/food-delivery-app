@@ -38,7 +38,7 @@ const orderSchema = new mongoose.Schema({
     transactionId : {type: String},
     paymentStatus: {
         type: String,
-        enum : ['pending', 'succeeded', 'failed'],
+        enum : ['pending', 'succeeded', 'failed', 'paid'],
         default: 'pending',
         index: true,
     },
@@ -52,7 +52,7 @@ const orderSchema = new mongoose.Schema({
     // ORDER TRACKING
     status: {
         type: String,
-        enum : ['processing', 'outForDelivery', 'delivered'],
+        enum : ['processing', 'outForDelivery', 'delivered','paid', 'pending', 'failed'],
         default: 'processing',
         index: true
     },

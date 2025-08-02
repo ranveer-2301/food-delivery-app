@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
 
 const authMiddleware = (req, res, next) => {
-    console.log("req cookies", req.cookies);
-    console.log("req headers", req.headers);
+    // console.log("req cookies", req.cookies);
+    // console.log("req headers", req.headers);
     const token = req.cookies?.token || (req.headers.authorization && req.headers.authorization.split(' ')[1]);
-    console.log("token", token);
+    console.log("token in auth middleware ppp", token);
     if (!token) {
         return res.status(401).json({ success: false, message: 'Token Missing' });
     }

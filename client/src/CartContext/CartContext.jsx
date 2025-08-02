@@ -36,6 +36,7 @@ const cartReducer = (state, action) => {
     }
 
     case 'CLEAR_CART' : 
+    console.log("this is clear cart in redux")
     return [];
 
     default:
@@ -122,14 +123,19 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = useCallback(async() =>{
     const token = localStorage.getItem('authToken')
-    await axios.post(
+      console.log("token in clear cart", token)
+   try {
+     const res = await axios.delete(
       `http://localhost:5000/api/cart/clear`,
-      {},
       {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}` }
       }
     )
+    console.log("res in clear cart ", res)
+   } catch (error) {
+    console.log("error in clear cart", error)
+   }
     dispatch({ type: 'CLEAR_CART'})
   }, [])
 

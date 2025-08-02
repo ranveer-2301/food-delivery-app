@@ -46,33 +46,6 @@ module.exports.createItem = async (req, res, next) => {
   }
 }
 
-// // GET FUNCTION TO GET ALL ITEMS
-// module.exports.getItems = async(req, res, next) => { // if needed use _req
-//     try {
-//         const items = await itemModel.find().sort({createdAt: -1});
-//         const host = `${req, protocol}://${req.get('host')}`;
-
-//         const withFullUrl = items.applyTimestamps(i => ({
-//             ...i.toObject(),
-//             imageUrl: i.imageUrl ? host + i.imageUrl : '',
-//         }))
-//         res.json(withFullUrl)
-//     } catch (error) {
-//         next(error);
-//     }
-// }
-
-// // DELETE FUNCTION TO DELETE ITEMS
-// module.exports.deleteItem = async(req, res, next) => {
-//   try {
-//       const removed = await itemModel.findByIdAndDelete(req.params.id);
-//       if(!removed) return res.status(404).json({ success: false, message: "Item not found"})
-//           res.status(204).end();
-//   } catch (error) {
-//       next(error);
-//   }
-// }
-
 // GET FUNCTION TO GET ALL ITEMS
 module.exports.getItems = async (req, res, next) => {
   try {
