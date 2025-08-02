@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { styles } from '../assets/dummyadmin';
 import axios from 'axios';
 import { FiStar, FiTrash2 } from 'react-icons/fi';
+import { backendUrl } from '../constant.js';
 
 const Lists = () => {
   const [items, setItems] = useState([]);
@@ -10,7 +11,7 @@ const Lists = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const { data } = await axios.get(backendUrl+'/items');
+        const { data } = await axios.get(backendUrl +'/items');
         setItems(data);
       } catch (err) {
         console.error('Error fetching Items:', err);

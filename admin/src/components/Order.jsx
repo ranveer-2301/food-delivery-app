@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { layoutClasses, tableClasses } from '../assets/dummyadmin';
 import axios from 'axios';
 import { FiUser, FiBox, FiClock, FiCheckCircle, FiXCircle, FiLoader } from 'react-icons/fi';
+import { backendUrl } from '../constant.js';
 
 const iconMap = {
   pending: <FiClock />,
@@ -59,7 +60,7 @@ const Order = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(backendUrl+'/orders/getall', {
+        const response = await axios.get(backendUrl +'/orders/getall', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
         });
 

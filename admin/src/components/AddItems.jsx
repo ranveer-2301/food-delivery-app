@@ -4,6 +4,7 @@ import { FiHeart, FiUpload, FiStar } from 'react-icons/fi';
 import { FaRupeeSign } from 'react-icons/fa';
 import { styles } from '../assets/dummyadmin.jsx';
 import { toast } from 'react-toastify';
+import { backendUrl } from '../constant.js';
 
 const AddItems = () => {
   const [formData, setFormData] = useState({
