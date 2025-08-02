@@ -18,6 +18,7 @@ const AddItems = () => {
     image: null,
     preview: ''
   });
+  console.log("backendUrl", backendUrl);
 
   const [hoverRating, setHoverRating] = useState(0);
 
@@ -58,7 +59,6 @@ const AddItems = () => {
           payload.append(key, val);
         }
       });
-      console.log(backendUrl);
 
       const res = await axios.post(backendUrl+'/items', payload, {
         headers: { 'Content-Type': 'multipart/form-data' }
