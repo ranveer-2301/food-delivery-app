@@ -10,7 +10,7 @@ const Lists = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/items');
+        const { data } = await axios.get(backendUrl+'/items');
         setItems(data);
       } catch (err) {
         console.error('Error fetching Items:', err);
@@ -25,7 +25,7 @@ const Lists = () => {
   const handleDelete = async (itemId) => {
     if (!window.confirm('Are you sure you want to delete this item?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/items/${itemId}`);
+      await axios.delete(backendUrl+`/items/${itemId}`);
       setItems((prev) => prev.filter((item) => item._id !== itemId));
       console.log('Deleted item ID:', itemId);
     } catch (err) {

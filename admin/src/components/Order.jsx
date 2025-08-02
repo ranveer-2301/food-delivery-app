@@ -59,7 +59,7 @@ const Order = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/orders/getall', {
+        const response = await axios.get(backendUrl+'/orders/getall', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
         });
 
@@ -96,7 +96,7 @@ const Order = () => {
 
   const handleStatusChange = async (orderId, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/orders/getall/${orderId}`, { status: newStatus });
+      await axios.put(backendUrl+`/orders/getall/${orderId}`, { status: newStatus });
       setOrders(prev =>
         prev.map(o => (o._id === orderId ? { ...o, status: newStatus } : o))
       );

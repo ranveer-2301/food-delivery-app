@@ -58,7 +58,7 @@ const AddItems = () => {
         }
       });
 
-      await axios.post('http://localhost:5000/api/items', payload, {
+      await axios.post(backendUrl+'/items', payload, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
