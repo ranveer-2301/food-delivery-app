@@ -19,6 +19,7 @@ const Order = () => {
   const paymentMethodDetails = {
     cod: { label: 'Cash on Delivery', class: 'bg-yellow-500 text-black' },
     card: { label: 'Card Payment', class: 'bg-green-500 text-white' },
+    online: { label: 'Online', class: 'bg-green-500 text-white' },
     default: { label: 'Unknown', class: 'bg-gray-400 text-white' },
   };
 

@@ -105,7 +105,7 @@ const CartPage = () => {
 
                 <div className="flex items-center gap-4">
                   <h2 className="text-3xl font-dancingscript text-amber-100">
-                    Total: ₹{cartTotal}
+                    Total: ₹{(cartTotal + cartTotal*0.05)}
                   </h2>
                   <Link to='/checkout' className="bg-amber-900/40 px-8 py-3 rounded-full font-cinzel uppercase tracking-wider hover:bg-amber-800/50 transition-all duration-300 text-amber-100 flex items-center gap-2 hover:gap-3 active:scale-95">
                     Checkout Now

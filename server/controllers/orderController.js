@@ -38,7 +38,7 @@ module.exports.createOrder = async (req, res) => {
                     price_data: {
                         currency: 'inr',
                         product_data: { name: o.item.name },
-                        unit_amount: Math.round(o.item.price * 100),
+                        unit_amount: Math.round(o.item.price * 1.05 * 100),
                     },
                     quantity: o.quantity,
                 })),

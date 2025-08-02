@@ -86,7 +86,7 @@ export const CartProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` }
       }
     )
-    console.log("res in addtocart", res)
+    // console.log("res in addtocart", res)
     dispatch({ type: 'ADD_ITEM', payload: res.data });
   }, []);
 
@@ -114,7 +114,7 @@ export const CartProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` }
       }
     )
-    console.log("res in update qantity", res)
+    // console.log("res in update qantity", res)
     dispatch({ type: 'UPDATE_ITEM', payload: res.data });
     } catch (error) {
       console.log("error ", error)
@@ -123,7 +123,7 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = useCallback(async() =>{
     const token = localStorage.getItem('authToken')
-      console.log("token in clear cart", token)
+      // console.log("token in clear cart", token)
    try {
      const res = await axios.delete(
       `http://localhost:5000/api/cart/clear`,

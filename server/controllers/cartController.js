@@ -96,8 +96,8 @@ const deleteCartItem = asyncHandler(async (req, res) => {
 // CLEAR CART
 const clearCart = asyncHandler(async (req, res) => {
     try {
-            await CartItem.deleteMany({ user: req.user._id });
-    res.json({ message: 'Cart cleared' });
+        await CartItem.deleteMany({ user: req.user._id });
+        res.json({ message: 'Cart cleared' });
     } catch (error) {
         console.log(error)
         res.status(5000).json({

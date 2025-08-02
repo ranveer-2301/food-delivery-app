@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa';
-import { FiBox, FiCheckCircle, FiClock, FiDivideCircle, FiMapPin, FiTruck, FiUser } from 'react-icons/fi';
+import { FiBox, FiCheckCircle, FiClock, FiXCircle, FiMapPin, FiTruck, FiUser } from 'react-icons/fi';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
@@ -103,6 +103,18 @@ const MyOrder = () => {
         bg: 'bg-yellow-900/20',
         icon: <FiClock className="text-lg" />,
         label: 'Payment Pending'
+    },
+    paid: {
+        color: 'text-green-400',
+        bg: 'bg-green-900/20',
+        icon: <FiCheckCircle className="text-lg" />,
+        label: 'Paid'
+    },
+    failed: {
+        color: 'text-red-400',
+        bg: 'bg-red-900/20',
+        icon: <FiXCircle className="text-lg" />,
+        label: 'Failed'
     },
     succeeded: {
         color: 'text-green-400',
