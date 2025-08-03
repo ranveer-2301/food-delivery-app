@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // ✅ Make sure you have this
 import { FaArrowLeft, FaCheckCircle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
+import { backendUrl } from '../../constant';
 
 // Replace with your actual backend URL
 // const url = 'http://localhost:5000';
