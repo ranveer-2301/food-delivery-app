@@ -25,7 +25,7 @@ const Login = ({ onLoginSuccess, onClose }) => {
         password: formData.password,
       });
 
-      console.log('Axios Response', res);
+      console.log('Axios Response in login', res);
 
       if (res.status === 200 && res.data.success && res.data.TOKEN) {
         localStorage.setItem('authToken', res.data.TOKEN);
