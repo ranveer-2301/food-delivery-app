@@ -40,6 +40,7 @@ const Checkout = () => {
           {headers: authHeaders })
           .then(({data}) => {
             clearCart();
+            console.log("this is checkout ")
             navigate('/myorder', {state: {order: data.order }})
           })
           .catch(err => {

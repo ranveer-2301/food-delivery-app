@@ -23,6 +23,8 @@ const MyOrder = () => {
             Authorization: `Bearer ${localStorage.getItem('authToken')}`
           }
         })
+
+        console.log(response);
         // FORMAT FOR DATA
         const formattedOrders = response.data.map(order => ({
           ...order,

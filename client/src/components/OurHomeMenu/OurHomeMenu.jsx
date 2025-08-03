@@ -12,9 +12,11 @@ const OurHomeMenu = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const { cartItems, addToCart, removeFromCart, updateQuantity } = useCart();
   const [menuData, setMenuData] = useState({});
+  const[loading, setLoading] = useState(false);
   console.log("backendrul", backendUrl)
 
   useEffect(() => {
+    setLoading(true)
     axios.get(backendUrl+'/items')
       .then(res => {
         const grouped = res.data.reduce((acc, item) => {
@@ -24,13 +26,23 @@ const OurHomeMenu = () => {
         }, {});
         setMenuData(grouped);
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(setLoading(false))
   }, []);
+  console.log("loding", loading)
 
   // USE ID TO FIND AND UPADATE
   const getCartEntry = id => cartItems.find(ci => ci.item._id === id);
   const getQuantity = id => getCartEntry(id)?.quantity || 0;
   const displayItems = (menuData[activeCategory] || []).slice(0, 4);
+
+  if(loading){
+    return <>
+    <div className=' bg-amber-300 h-screen w-fulla'>
+
+    </div>
+    </>
+  }
 
   return (
     <div className="bg-gradient-to-br from-[#1a120b] via-[#2a1e14] to-[#362016] min-h-screen py-16 px-4 sm:px-6 lg:px-8">
@@ -43,6 +55,7 @@ const OurHomeMenu = () => {
             A Symphony of Flavours
           </span>
         </h2>
+
 
         <div className='flex flex-wrap justify-center gap-4 mb-16'>
           {categories.map(cat => (
