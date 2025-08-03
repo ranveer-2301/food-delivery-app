@@ -3,6 +3,7 @@ import { FaArrowLeft, FaLock } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {useCart} from '../../CartContext/CartContext';
 import axios from 'axios';
+import { backendUrl } from '../../constant';
 
 
 const Checkout = () => {
