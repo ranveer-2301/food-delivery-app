@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { LuReplace } from 'react-icons/lu';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useCart } from '../../CartContext/CartContext'; 
+import { useCart } from '../../CartContext/CartContext';
 import axios from 'axios';
 import { backendUrl } from '../../constant';
 
